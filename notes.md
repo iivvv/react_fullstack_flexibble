@@ -79,7 +79,7 @@ contain common Tailwind classes
 
 
 
-## 2.开始搭建
+## 2.开始搭建:navbar\footer
 
 page.tsx 增加内容
 
@@ -104,6 +104,56 @@ bug：tailwind ：gap-10 为什么没有提示
 ### 创建组件：Footer.tsx
 
 ![image-20230731021317575](/Users/puluotagela/Library/Application Support/typora-user-images/image-20230731021317575.png)
+
+
+
+## 3.使用 grafbase
+
+##### 注册grafbase
+
+https://grafbase.com/
+
+##### 项目里初始化
+
+https://www.npmjs.com/package/@grafbase/sdk
+
+- ```npx grafbase init --config-format typescript```
+
+##### 项目里修改 grafbase.config.ts，创建 2 个数据 model
+
+##### grafbase 连接 github repository
+
+##### 项目连接 grafbase
+
+![image-20230731030201058](/Users/puluotagela/Library/Application Support/typora-user-images/image-20230731030201058.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
