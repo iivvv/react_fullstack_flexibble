@@ -4,7 +4,8 @@ import Link from "next/link";
 import AuthProviders from "./AuthProviders";
 
 const Navbar = () => {
-  const session = {}; //判断是否已经登录
+  const session = null; //判断是否已经登录
+  // const session = {};
   return (
     <nav className="flexBetween navbar">
       <div className="flex-1 flexStart gap-10 ">
@@ -30,7 +31,9 @@ const Navbar = () => {
             <Link href="/create-project">Share Work</Link>
           </>
         ) : (
-          <AuthProviders />
+          <>
+            <AuthProviders />
+          </>
         )}
       </div>
     </nav>

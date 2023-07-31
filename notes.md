@@ -135,6 +135,7 @@ https://www.npmjs.com/package/@grafbase/sdk
 
 
 
+## AuthProviders.tsx
 
 
 
@@ -142,18 +143,72 @@ https://www.npmjs.com/package/@grafbase/sdk
 
 
 
+#### NextAuth 谷歌登录
+
+https://next-auth.js.org/getting-started/example
+
+app/api/auth/[...nextauth]/routes.ts
+
+这个路径和文档里不一样诶
+
+https://next-auth.js.org/providers/google
+
+
+
+```ts
+lib/session.ts 
+import { getServerSession } from "next-auth/next";
+import { NextAuthOptions, User } from "next-auth";
+import { AdapterUser } from "next-auth/adapters";
+import GoogleProvider from "next-auth/providers/google";
+import jsonwebtoken from "jsonwebtoken";
+import { JWT } from "next-auth/jwt";
+
+export const authOptions: NextAuthOptions = {
+  providers: [
+    GoogleProvider({
+      clientId: "",
+      clientSecret: "",
+    }),
+  ],
+  jwt: {
+    encode: ({ secret, token }) => {},
+    decode: async ({ secret, token }) => {},
+  },
+  theme: {
+    colorScheme: "light",
+    logo: "/logo.svg",
+  },
+  callbacks: {
+    async session({ session }) {},
+    async signIn({ user }) {},
+  },
+};
+
+```
+
+
+
+```ts
+app/api/auth/[...nextauth]/routes.ts
+import NextAuth from "next-auth";
+import { authOptions } from "@/lib/session";
+const handler = NextAuth(authOptions);
+export { handler as GET, handler as POST };
+
+```
 
 
 
 
 
+##### console.cloud.google.com
 
+https://console.cloud.google.com/getting-started?pli=1
 
+59:00
 
-
-
-
-
+![image-20230731214656860](/Users/puluotagela/Library/Application Support/typora-user-images/image-20230731214656860.png)
 
 
 
@@ -194,6 +249,34 @@ https://www.youtube.com/watch?v=21HuwjmuS7A&list=PL7CcGwsqRpSM3w9BT_21tUU8JN2Sny
 增加了一堆 setting.json的设置，还安装了 postcss、autoprefixer，出现了输入提示，但是 hover  preview 还是没有QAQ
 
 ##### 4.tailwind 属性 gap-10 为什么没有提示
+
+
+
+##### 5.git push 报错fatal: unable to access 'https://github.com/iivvv/react_fullstack_flexibble.git/': Failed to connect to github.com port 443 after 75029 ms: Couldn't connect to server
+
+把 vpn 关了就行了……
+
+
+
+##### 6.Next.js 项目中添加 google 身份验证报错
+
+![image-20230801003152663](/Users/puluotagela/Library/Application Support/typora-user-images/image-20230801003152663.png)
+
+https://stackoverflow.com/questions/74180557/next-auth-next-autherrorclient-fetch-error-networkerror-when-attempting-to
+
+
+
+https://github.com/nextauthjs/next-auth/issues/4986
+
+route 不能多加 s……（因为 next 对文件路径的规定？
+
+![image-20230801005028002](/Users/puluotagela/Library/Application Support/typora-user-images/image-20230801005028002.png)
+
+![image-20230801010147307](/Users/puluotagela/Library/Application Support/typora-user-images/image-20230801010147307.png)
+
+
+
+
 
 ## REF
 
